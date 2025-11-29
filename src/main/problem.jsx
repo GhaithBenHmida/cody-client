@@ -7,6 +7,7 @@ import axios from "axios"
 import LoadingBar from "../componants/loading";
 
 export default function Problem(){
+    const BACKEND_URL = import.meta.env.BACKEND;
     const [input, setInput] = useState("")
     const [context, setContext] = useState([])
     const [loading, setLoading] = useState(false) 
@@ -32,7 +33,7 @@ export default function Problem(){
           });
 
           const response = await axios.post(
-            "http://localhost:5000/api/problem",
+            BACKEND_URL+"/api/problem",
             formData,
             {
               headers: {

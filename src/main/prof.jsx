@@ -9,6 +9,7 @@ import LoadingBar from "../componants/loading";
 
 
 export default function Prof() {
+  const BACKEND_URL = import.meta.env.BACKEND;
   const [prob, setProb] = useState("");
   const [sol, setSol] = useState("");
   const [context, setContext] = useState([]);
@@ -21,7 +22,7 @@ export default function Prof() {
       }
       setLoading(true);
       try {
-        const response = await axios.post("http://localhost:5000/api/prof", {
+        const response = await axios.post(BACKEND_URL+"/api/prof", {
           prob,
           sol
         });

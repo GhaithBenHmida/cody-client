@@ -7,6 +7,7 @@ import axios from "axios";
 
 
 export default function Translator(){
+  const BACKEND_URL = import.meta.env.BACKEND;
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false) 
     const [output, setOutput] = useState("")
@@ -20,7 +21,7 @@ export default function Translator(){
         }
         setLoading(true) 
         try {
-            const response = await axios.post("http://localhost:5000/api/trans", {
+            const response = await axios.post(BACKEND_URL+"/api/trans", {
                 code: input,
                 from:from,
                 to:to
