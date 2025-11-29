@@ -21,7 +21,7 @@ export default function Translator(){
         }
         setLoading(true) 
         try {
-            const response = await axios.post(BACKEND_URL+"/api/trans", {
+            const response = await axios.post("https://cody-server.vercel.app/api/prof", {
                 code: input,
                 from:from,
                 to:to

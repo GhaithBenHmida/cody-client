@@ -22,7 +22,7 @@ export default function Prof() {
       }
       setLoading(true);
       try {
-        const response = await axios.post(BACKEND_URL+"/api/prof", {
+        const response = await axios.post("https://cody-server.vercel.app/api/prof", {
           prob,
           sol
         });

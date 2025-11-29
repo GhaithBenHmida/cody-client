@@ -24,16 +24,14 @@ export default function Problem(){
         try {
           const formData = new FormData();
 
-          // Add the query (convert your array to JSON if needed)
           formData.append("query", JSON.stringify([...context, input]));
 
-          // Add the attached files
           attachedFiles.forEach((file) => {
             formData.append("files", file);
           });
 
           const response = await axios.post(
-            BACKEND_URL+"/api/problem",
+            "https://cody-server.vercel.app/api/problem",
             formData,
             {
               headers: {
