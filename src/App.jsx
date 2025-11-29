@@ -1,5 +1,5 @@
 import Sidebar from "./componants/sidebar";
-import "./app.css"
+import "./App.css";
 import React, {useState, useEffect} from "react";
 import Problem from "./main/problem";
 import Translator from "./main/translator";
