@@ -1,0 +1,140 @@
+.userBox{
+    margin: 20px;
+    width: fit-content;
+    height: auto;
+    border-radius: 8px;
+    background-color: #ac9f9f2f;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 10px 18px ;
+    max-width: 38%;
+    line-height: 1.5;
+}
+.resonseBox{
+  background-color: rgb(29, 29, 29);
+    margin: 20px;
+    border: 2px solid #46A6F4;
+    border-radius: 10px;
+    height: auto;
+    width: fit-content;
+    max-width: 50%;
+    position: relative;
+    padding: 14px;
+    line-height: 1.5;
+    font-size: 17px;
+    white-space: pre-wrap;
+
+}
+.top-side{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    
+    padding-top: 0;
+}
+.cpy{
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    padding: 6px;
+    margin-bottom: 8px;
+}
+.cpy:hover{
+    scale: 1.05;
+    border-radius: 8px;
+}
+.cpy:active{
+  scale: 1;
+  background-color: #46a6f459;
+}
+
+@media (max-width: 768px) {
+  .userBox{
+    margin: 15px;
+    max-width: 56%;
+  }
+  .resonseBox{
+    max-width: 65%;
+  }
+}
+
+.error{
+  color:  red;
+}
+.input-bar {
+  width: 100%;
+  border-radius: 40px;
+  border: 2px solid #46A6F4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 4px 20px;
+  background-color: #d9d9d91a;
+  height: auto;
+  transition: all .2s linear;
+}
+#f{
+    display: none;
+}
+.intput-bar-text {
+  text-overflow: ellipsis;  
+  width: 100%;
+  height: 41px;
+  min-height: 41px;
+  max-height: 250px;  
+  resize: none;       
+  overflow-y: hidden; 
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.input-bar:focus-within {
+  width: 195%;
+}
+
+.bar-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #717171;
+  overflow: hidden;
+  border-radius: 50px;
+  width: 44px;
+  height: 35px;
+  transition: background-color 0.2s ease;
+}
+
+.bar-btn:hover {
+  background-color: #888;
+}
+
+.bar-btn-img{
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+}
+
+.bar-btn:last-child{
+  margin-left: 5px;
+  background-color: #46A6F4;
+}
+
+.bar-btn:last-child:hover {
+  background-color: #3a8fd9;
+}
+
+#scnd-img{
+  scale: 1.1;
+}
+

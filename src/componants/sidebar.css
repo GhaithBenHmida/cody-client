@@ -1,0 +1,272 @@
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+
+
+.mobile-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  background: #191B1F;
+  padding: 0 16px;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  
+}
+
+.hamburger {
+  position: relative;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-title {
+  margin-left: 10px;
+  position: relative;
+  font-size: 24px;
+  font-weight: 500;
+}
+.mobile-title::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Cody";
+  color: white;
+  font-size: 24px;
+  filter: blur(1px);
+  font-weight: 500;
+}
+
+
+.sidebar {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  background: #191B1F;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all .3s linear;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+.sidebar.mobcoll {
+  display: none;
+}
+
+.sidebar.mobile-open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    left: 0;
+  }
+
+  .sidebar.mobile-open {
+    transform: translateX(0);
+  }
+}
+
+
+.sidebar-header {
+  height: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eeeeee81;
+}
+
+.logotext {
+  margin-left: 3px;
+  font-size: 32px;
+  font-weight: 600;
+  position: relative;
+  color: white;
+}
+.logotext::after{
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "Cody";
+  color: white;
+  font-size: 32px;
+  filter: blur(2px);
+  font-weight: 600;
+}
+
+.collapse-btn {
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: all 0.1s ease;
+}
+.collapse-btn:hover{
+  opacity: 1;
+}
+.col{
+    width: 25px;
+    aspect-ratio: 1/1;
+   
+}
+
+
+.sidebar-items {
+  list-style: none;
+  padding: 10px;
+  margin-top: 35px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  
+  padding:  10px 20px;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 1);
+  background-color: transparent;
+  cursor: pointer;
+  transition: all 0.2s linear;
+  opacity: 0.85;
+  font-weight: 400;
+}
+.item:hover{
+  opacity: 1;
+  border: 2px solid #46A6F4;
+  color: #46A6F4;
+}
+.item-collapsed{
+  padding:  10px 0 ;
+  border: 2px solid rgba(255, 255, 255, 0.192);
+  justify-content: center;
+}
+
+.icon {
+  width: 30px;
+}
+
+.text {
+  white-space: nowrap;
+  margin-left: 12px;
+  font-size: 18px;
+}
+
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+}
+
+.logo{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    
+}
+.logo-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.sidebarH-item{
+    width: 100%;
+    
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sidebarH-item-collapsed{
+  justify-content: center;
+}
+
+#ajst{
+    width: 38px;
+    height: 38px;
+    
+}
+#last-item{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    margin-bottom: 5px;
+}
+.ajst-name{
+    font-family: "Inter", sans-serif;
+    color: white;
+    padding: 3px;
+    font-weight: 300;
+
+    font-size: 18;
+    opacity: 0.8;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+}
+.slidebarfooter{
+  
+  border-top: 1px solid #eeeeee81;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 6px;
+  padding: 12px;
+}
+.footer-link{
+  font-size: 18px;
+  color: white;
+  text-decoration: none;
+  opacity: 0.75;
+  margin-left: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.footer-link:hover{
+  text-decoration: underline;
+  opacity: 1;
+}
+.logo-media{
+  width: 30px;
+  margin-left: 10px;
+}
+.mobile-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

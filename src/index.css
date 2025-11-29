@@ -1,0 +1,13 @@
+:root {
+  font-weight: 300;
+  height: 100vh;
+  color-scheme: light dark;
+  
+  background-color: #22292C;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+

@@ -1,0 +1,48 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.app-container {
+  display: flex;
+}
+
+.content {
+  
+  position: relative;
+  transition: all 0.3s linear;
+  width: 100%;
+  height: 100%;
+  margin-left: 300px;
+}
+.content-collapsed{
+  margin-left: 70px;
+}
+
+.parent{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .content {
+    margin-left: 0;
+  }
+}
+.left-t{
+  width: 100px;
+  height: 10px;
+  background-color: red;
+}
+.right-t{
+  width: 100%;
+  height: 10px;
+  background-color: rebeccapurple;
+}

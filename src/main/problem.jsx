@@ -1,0 +1,77 @@
+import React, {useState} from "react";
+import InputBar from "../componants/inputBar";
+import UserTextBox from "../componants/userTextBox";
+import ResponseBox from "../componants/responsebox";
+import "./pages.css"
+import axios from "axios"
+import LoadingBar from "../componants/loading";
+
+export default function Problem(){
+    const [input, setInput] = useState("")
+    const [context, setContext] = useState([])
+    const [loading, setLoading] = useState(false) 
+    const [attachedFiles, setAttachedFiles] = useState([])
+
+
+
+      async function sendToBackend() {
+        console.log("sending ...")
+        if(input === "" && attachedFiles == []) {
+          return 
+        }
+        setLoading(true) 
+        try {
+          const formData = new FormData();
+
+          // Add the query (convert your array to JSON if needed)
+          formData.append("query", JSON.stringify([...context, input]));
+
+          // Add the attached files
+          attachedFiles.forEach((file) => {
+            formData.append("files", file);
+          });
+
+          const response = await axios.post(
+            "http://localhost:5000/api/problem",
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+            }
+          );
+            if (response.data.message === "success") {
+              setContext(prev => [...prev, input, response.data?.response || "No response"]);
+              setInput("");
+            } else {
+              setContext(prev => [...prev, input, "error: " + (response.data?.message || "Unknown error")]);
+            }
+            
+        } catch (err) {
+          setContext(prev => [...prev, input, "error: server is propably down try again later! "]);
+          console.error(err)
+        } finally {
+          setLoading(false) 
+        }
+    }
+
+    return <>
+    <div className="problem">
+        {context.map((text, index) =>
+          index % 2 === 0 ? (
+            <div key={index} className="user-parent">
+              <UserTextBox message={text} />
+            </div>
+          ) : (
+            <ResponseBox key={index} response={text} />
+          )
+        )}
+        {loading && (<LoadingBar />)}
+
+    </div>
+    <div className="inputbar-parent">
+        <InputBar content={input} setContent={setInput} sendToBackend={sendToBackend} 
+        attachedFiles={attachedFiles} setAttachedFiles={setAttachedFiles}/>
+     </div>
+    </>
+}
