@@ -20,6 +20,8 @@
   display: flex;
   height: fit-content;
   width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 .intput-bar-text {
   text-overflow: ellipsis;  

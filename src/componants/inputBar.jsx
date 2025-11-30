@@ -40,10 +40,8 @@ export default function InputBar({holder = "write your problem or upload an img"
             </div>
             ))}
         </div>
-                 )}
-                 <div className="inp-right">
-
-                 
+    )}
+    <div className="inp-right">
             <textarea
             className="intput-bar-text"
             placeholder={holder}

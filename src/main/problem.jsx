@@ -6,17 +6,14 @@ import "./pages.css"
 import axios from "axios"
 import LoadingBar from "../componants/loading";
 
-export default function Problem(){
-    const BACKEND_URL = import.meta.env.BACKEND;
+
+
+export default function Problem({context, setContext, url}){
     const [input, setInput] = useState("")
-    const [context, setContext] = useState([])
-    const [loading, setLoading] = useState(false) 
+    const [loading, setLoading] = useState(false)
     const [attachedFiles, setAttachedFiles] = useState([])
 
-
-
       async function sendToBackend() {
-        console.log("sending ...")
         if(input === "" && attachedFiles == []) {
           return 
         }
@@ -31,7 +28,7 @@ export default function Problem(){
           });
 
           const response = await axios.post(
-            "https://cody-server.vercel.app/api/problem",
+            url+"/api/problem",
             formData,
             {
               headers: {

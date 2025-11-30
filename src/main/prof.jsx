@@ -8,11 +8,11 @@ import LoadingBar from "../componants/loading";
 
 
 
-export default function Prof() {
+export default function Prof(url, context, setContext) {
   const BACKEND_URL = import.meta.env.BACKEND;
   const [prob, setProb] = useState("");
   const [sol, setSol] = useState("");
-  const [context, setContext] = useState([]);
+
   const [loading, setLoading] = useState(false)
   const [attachedFiles, setAttachedFiles] = useState([])
 
@@ -22,7 +22,7 @@ export default function Prof() {
       }
       setLoading(true);
       try {
-        const response = await axios.post("https://cody-server.vercel.app/api/prof", {
+        const response = await axios.post(url+"/api/prof", {
           prob,
           sol
         });

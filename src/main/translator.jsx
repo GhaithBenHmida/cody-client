@@ -6,8 +6,8 @@ import axios from "axios";
 
 
 
-export default function Translator(){
-  const BACKEND_URL = import.meta.env.BACKEND;
+export default function Translator(url){
+  
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false) 
     const [output, setOutput] = useState("")
@@ -21,7 +21,7 @@ export default function Translator(){
         }
         setLoading(true) 
         try {
-            const response = await axios.post("https://cody-server.vercel.app/api/prof", {
+            const response = await axios.post(url+"/api/prof", {
                 code: input,
                 from:from,
                 to:to

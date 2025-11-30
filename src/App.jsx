@@ -6,14 +6,16 @@ import Translator from "./main/translator";
 import Prof from "./main/prof";
 function App() {
 
-
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  console.log("Backend URL:", BACKEND_URL)
+    
   const [page, setPage] = useState(1)
   const [collapsed, setCollapsed] = useState(false);
   const [mobColl, setMobColl] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false);
 
-
+  const [context, setContext] = useState([])
+  const [pcontext, setPContext] = useState([])
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,8 +37,6 @@ function App() {
   }, []);
 
 
-
-
   return (
     <>
       <div className="parent">
@@ -47,10 +47,9 @@ function App() {
       setMobColl={setMobColl} />
       
         <div className={`content  ${collapsed ? "content-collapsed" : null}`}>
-     
-            {page===1 && <Problem />}
-            {page===2 && <Translator />}
-            {page===3 && <Prof />}
+            {page===1 && <Problem context={context} setContext={setContext} url={BACKEND_URL} />}
+            {page===2 && <Translator url={BACKEND_URL} />}
+            {page===3 && <Prof context={pcontext} setContext={setPContext} url={BACKEND_URL}  />}
         </div> 
      
       </div>
