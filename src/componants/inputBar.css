@@ -11,6 +11,7 @@
   background-color: #d9d9d91a;
   height: auto;
   transition: all .2s linear;
+  
 }
 
 #f{
@@ -82,12 +83,14 @@
   color: #17191a;
   font-weight: 500;
   max-width: 200px;
-}
-
-.file-name {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.file-name {
+  max-width: 90%;
+  
 }
 
 .file-remove {
@@ -108,4 +111,12 @@
 
 .file-remove:hover {
   opacity: 0.7;
+}
+@media (max-width: 768px) {
+    .intput-bar-text{
+      font-size: 16px;
+    }
+    .input-bar{
+      max-width: 100%;
+    }
 }

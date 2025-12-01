@@ -7,7 +7,6 @@ import Prof from "./main/prof";
 function App() {
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-  console.log("Backend URL:", BACKEND_URL)
     
   const [page, setPage] = useState(1)
   const [collapsed, setCollapsed] = useState(false);
@@ -15,7 +14,7 @@ function App() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const [context, setContext] = useState([])
-  const [pcontext, setPContext] = useState([])
+  const [prof, setProf] = useState([{}])
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,7 +48,7 @@ function App() {
         <div className={`content  ${collapsed ? "content-collapsed" : null}`}>
             {page===1 && <Problem context={context} setContext={setContext} url={BACKEND_URL} />}
             {page===2 && <Translator url={BACKEND_URL} />}
-            {page===3 && <Prof context={pcontext} setContext={setPContext} url={BACKEND_URL}  />}
+            {page===3 && <Prof context={prof} setContext={setProf} url={BACKEND_URL} />}
         </div> 
      
       </div>

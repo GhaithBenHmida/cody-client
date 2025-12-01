@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import InputBar from "../componants/inputBar";
 import UserTextBox from "../componants/userTextBox";
 import ResponseBox from "../componants/responsebox";
@@ -8,14 +8,19 @@ import LoadingBar from "../componants/loading";
 
 
 
-export default function Prof(url, context, setContext) {
-  const BACKEND_URL = import.meta.env.BACKEND;
+export default function Prof({url, context, setContext}) {
+  
+
   const [prob, setProb] = useState("");
   const [sol, setSol] = useState("");
-
   const [loading, setLoading] = useState(false)
   const [attachedFiles, setAttachedFiles] = useState([])
-
+  const [attachedFiles2, setAttachedFiles2] = useState([])
+  const problemRef = useRef(null)
+  function scrollToBottom() {
+    if (!problemRef.current) return
+    problemRef.current.scrollTo({ top: problemRef.current.scrollHeight, behavior: "smooth" })
+  }
     async function sendToBackend() {
       if (prob === "" && sol === "") {
         return;
@@ -34,6 +39,8 @@ export default function Prof(url, context, setContext) {
 
           setProb("");
           setSol("");
+          setAttachedFiles([])
+          setAttachedFiles2([])
         } else {
           setContext(prev => [...prev, { prob: prob, sol: sol }]);
           setContext(prev => [...prev, { err: "error: "+ response.data?.response.message}]);
@@ -45,12 +52,13 @@ export default function Prof(url, context, setContext) {
         console.error(err);
       } finally {
         setLoading(false);
+        requestAnimationFrame(scrollToBottom)
       }
   }
 
   return (
     <>
-      <div className="problem">
+      <div className="problem" ref={problemRef}>
         {context.map((text, index) => {
           if (text.prob) {
             return (
@@ -90,7 +98,7 @@ export default function Prof(url, context, setContext) {
         <InputBar holder="problem" content={prob} setContent={setProb} sendToBackend={sendToBackend}
         attachedFiles={attachedFiles} setAttachedFiles={setAttachedFiles} />
         <InputBar holder="solution" content={sol} setContent={setSol} sendToBackend={sendToBackend} 
-        attachedFiles={attachedFiles} setAttachedFiles={setAttachedFiles}/>
+        attachedFiles={attachedFiles2} setAttachedFiles={setAttachedFiles2}/>
       </div>
     </>
   );

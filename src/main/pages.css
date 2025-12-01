@@ -95,6 +95,9 @@ select{
     .int{
         margin-top: 10%;
     }
+    .inputbar-parent:focus-within{
+        flex-direction: column;
+    }
 }
 .translate-btn{
     background-color: #46A6F4;
