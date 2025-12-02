@@ -31,7 +31,7 @@ export default function Prof({url, context, setContext}) {
           prob,
           sol
         });
-        console.log(response.data.response)
+
         if ( response.data?.message === "success") {
           
           setContext(prev => [...prev, { prob: prob, sol: sol }]);

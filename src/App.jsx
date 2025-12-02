@@ -7,7 +7,7 @@ import Prof from "./main/prof";
 function App() {
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
-    
+  
   const [page, setPage] = useState(1)
   const [collapsed, setCollapsed] = useState(false);
   const [mobColl, setMobColl] = useState(false)
@@ -47,7 +47,7 @@ function App() {
       
         <div className={`content  ${collapsed ? "content-collapsed" : null}`}>
             {page===1 && <Problem context={context} setContext={setContext} url={BACKEND_URL} />}
-            {page===2 && <Translator url={BACKEND_URL} />}
+            {page===2 && <Translator  />}
             {page===3 && <Prof context={prof} setContext={setProf} url={BACKEND_URL} />}
         </div> 
      

@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 
-export default function Translator(url){
+export default function Translator(){
   
     const [input, setInput] = useState("")
     const [loading, setLoading] = useState(false) 
@@ -14,24 +14,29 @@ export default function Translator(url){
     const [from, setFrom] = useState("algo")
     const [to, setTo] = useState("python")
 
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
         async function sendToBackend() {
         if(input === "") {
           return 
         }
-        setLoading(true) 
+        setLoading(true)
+        console.log(input, from , to)
         try {
-            const response = await axios.post(url+"/api/prof", {
-                code: input,
-                from:from,
-                to:to
-            });
+            
+            
+        const response = await axios.post(`${BACKEND_URL}/api/trans`, {
+          code: input,
+          from: from,
+          to: to
+        });
 
-            if (response.data.message === "success") {
-              setOutput(response.data?.response );
-            } else {
-              setOutput("error: " + (response.data?.message || "Unknown error"));
-            }
+
+          if (response.data.message === "success") {
+            setOutput(response.data?.response );
+          } else {
+            setOutput("error: " + (response.data?.message || "Unknown error"));
+          }
             
         } catch (err) {
           setOutput("error: server is propably down try again later! ");
